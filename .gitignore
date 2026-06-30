@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+backend/vendor/
+
+# Build outputs
+dist/
+backend/public/build/
+backend/public/admin-panel/
+
+# Environment files
+.env
+.env.bak
+.env.backup
+.env.production
+backend/.env
+backend/.env.bak
+
+# Laravel
+backend/storage/*.key
+backend/storage/logs/*.log
+backend/bootstrap/cache/*.php
+backend/.phpunit.cache
+backend/public/storage
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-error.log*

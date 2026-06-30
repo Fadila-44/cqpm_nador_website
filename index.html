@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CQPM Nador - Centre de Qualification Professionnelle</title>
+    <meta name="author" content="Fdila Ait Hamou">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Anti-flash: apply accessibility settings before first paint -->
+    <script>
+      (function() {
+        try {
+          var s = JSON.parse(localStorage.getItem('cqpm-accessibility') || '{}');
+          var classMap = {
+            grayscale: 'acc-grayscale',
+            highContrast: 'acc-high-contrast',
+            negativeContrast: 'acc-negative-contrast',
+            lightBg: 'acc-light-bg',
+            underlineLinks: 'acc-underline-links',
+            readableFont: 'acc-readable-font'
+          };
+          Object.keys(classMap).forEach(function(k) {
+            if (s[k]) document.documentElement.classList.add(classMap[k]);
+          });
+          if (s.fontSize && s.fontSize !== 100) {
+            document.documentElement.style.zoom = (s.fontSize / 100).toFixed(1);
+          }
+        } catch(e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
