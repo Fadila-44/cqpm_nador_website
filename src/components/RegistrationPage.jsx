@@ -7,11 +7,37 @@ const months = Array.from({ length: 12 }, (_, index) => String(index + 1).padSta
 const years = Array.from({ length: 31 }, (_, index) => String(2010 - index));
 
 const COUNTRY_CODES = [
-  // ... (inchangé, garde ta liste)
+  { code: "+212", country: "Maroc" },
+  { code: "+33", country: "France" },
+  { code: "+34", country: "Espagne" },
+  { code: "+213", country: "Algérie" },
+  { code: "+216", country: "Tunisie" },
+  { code: "+1", country: "USA/Canada" },
 ];
 
 function PhoneSelector({ page, countryCode, setCountryCode }) {
-  // ... (inchangé)
+  return (
+    <div className="phone-selector">
+      <select
+        name="country_code"
+        value={countryCode}
+        onChange={(e) => setCountryCode(e.target.value)}
+        required
+      >
+        {COUNTRY_CODES.map((c) => (
+          <option key={c.code} value={c.code}>
+            {c.code} ({c.country})
+          </option>
+        ))}
+      </select>
+      <input
+        name="phone"
+        type="tel"
+        required
+        placeholder={page.phonePlaceholder || "6XX XXX XXX"}
+      />
+    </div>
+  );
 }
 
 function Field({ label, required = false, children, wide = false }) {

@@ -6,12 +6,8 @@ const NIVEAU_PAGES = ["formation/niveau-qualification", "formation/niveau-appren
 export default function Programs({ text, navigate }) {
   const section = text.programs;
   
-  // ── Khoud l'titre mn programAssets (siteData.js) ──
-  const titleSection = programAssets[0]?.titleSection || "PROGRAMMES ACADÉMIQUES";
-  const subtitleSection = programAssets[0]?.subtitleSection || "Formations";
-  
   const programs = section.items.map((program, index) => ({
-    ...programAssets[index + 1], // +1 bach t9ra mn l'item tani (7it l'wel huwa l'titre)
+    ...programAssets[index],
     ...program,
     page: program.page || NIVEAU_PAGES[index],
   }));
@@ -22,13 +18,13 @@ export default function Programs({ text, navigate }) {
   return (
     <section className="section programs-section">
       <div className="container">
-        <div className="programs-heading programs-heading-simple scroll-reveal" ref={headingRef}>
-          <div className={headingVisible ? "visible" : ""}>
-            {/* ── TITRE MN siteData.js ── */}
-            <h2 className="programs-section-title">{titleSection}</h2>
-            <p className="programs-section-subtitle">{subtitleSection}</p>
-            <p>{section.intro}</p>
-          </div>
+        <div
+          className={`programs-heading programs-heading-simple scroll-reveal ${headingVisible ? "visible" : ""}`}
+          ref={headingRef}
+        >
+          {/* ─── TITRE SEULEMENT ─── */}
+          <h2 className="programs-section-title">PROGRAMMES ACADÉMIQUES</h2>
+          {/* Le reste (sous‑titre, intro) a été supprimé */}
         </div>
 
         <div className={`programs-grid scroll-reveal-stagger ${gridVisible ? "visible" : ""}`} ref={gridRef}>

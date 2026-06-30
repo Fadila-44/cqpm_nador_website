@@ -1,0 +1,13 @@
+# robots.txt — CQPM Nador
+# https://cqpmnador.ma
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin-panel
+Disallow: /api/
+Disallow: /sanctum/
+Disallow: /storage/
+
+# Sitemap
+Sitemap: https://cqpmnador.ma/sitemap.xml

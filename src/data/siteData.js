@@ -199,7 +199,7 @@ export const programs = [
     title: "Niveau Qualification",
     duration: "DURÉE : 2 ANS",
     image:
-      "https://i.pinimg.com/736x/a6/1d/71/a61d71802501a7ec7a20c271bde03da4.jpg",
+      "https://i.pinimg.com/1200x/0a/f0/3e/0af03e7f95ce020ddd2409c4baa30c01.jpg",
     text: "Le Niveau Qualification prépare les apprenants à l'obtention du CAPM dans les filières Pêche Maritime et Machine. Formation de deux ans : théorie, atelier et navire école.",
     tags: ["CAPM", "Pêche", "Machine"],
     diploma: "Certificat d'Aptitude Professionnelle Maritime",
@@ -209,7 +209,7 @@ export const programs = [
     icon: "build",
     title: "Niveau spécialisation par apprentissage",
     duration: "DURÉE : 2 ANS",
-    image: "/photo/specialis_peche.jpg",
+    image: "https://i.pinimg.com/1200x/0a/f0/3e/0af03e7f95ce020ddd2409c4baa30c01.jpg",
     text: "Formation en alternance entre le CQPM Nador et une entreprise partenaire. Forme des Marins Pêcheurs Côtiers, Marins Mécaniciens Côtiers et Marins Pêcheurs Artisanaux.",
     tags: ["Alternance", "Partenariat", "Professionnalisation"],
     diploma: "Spécialisation par Apprentissage",

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { applySEO } from "./hooks/useSEO.js";
 import AccessibilityToolbar from "./components/AccessibilityToolbar.jsx";
 import Header from "./components/Header.jsx";
 import LanguageFloating from "./components/LanguageFloating.jsx";
@@ -105,12 +106,11 @@ function AppShell() {
     document.documentElement.dir = text.dir;
   }, [lang, text.dir]);
 
+  // ── SEO: dynamic meta tags, Open Graph, canonical ──
   useEffect(() => {
     if (!isMounted) return;
-    document.title = page === "home"
-      ? "CQPM Nador - Centre de Qualification Professionnelle"
-      : `CQPM | ${getPageTitle(page, text)}`;
-  }, [page, text, isMounted]);
+    applySEO({ page, lang });
+  }, [page, lang, isMounted]);
 
   useEffect(() => {
     if (!isMounted) return;
@@ -173,7 +173,7 @@ function AppShell() {
     // ── Détail d’un avis ──
     if (page.startsWith("actualites/avis-resultats/")) {
       const avisId = page.replace("actualites/avis-resultats/", "");
-      const allAvis = getAllAvis(cms?.avis || []);// récupère les données
+      const allAvis = getAllAvis(); // récupère les données
       return <AvisDetailPage avisId={avisId} lang={lang} navigate={navigate} allAvis={allAvis} />;
     }
 

@@ -713,62 +713,67 @@ header,
 
 /* Mobile: centered blue panel overlapping bottom of full-bleed image */
 @media (max-width: 768px) {
-  .hero-section {
-    position: relative;
-    margin-top: 64px;
-    min-height: clamp(420px, 68vh, 560px);
-    height: auto;
-    display: block;
-    overflow: hidden;
-    left: auto;
-    width: 100%;
-    max-width: 100%;
-    transform: none;
-    padding-bottom: 0;
-  }
+/* بعد */
+.hero-section {
+  position: relative;
+  margin-top: 64px;
+  min-height: auto;
+  height: auto;
+  display: block;
+  overflow: visible;
+  left: auto;
+  width: 100%;
+  max-width: 100%;
+  transform: none;
+  padding-bottom: 0;
+}
 
-  .hero-section .hero-slider {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    width: 100%;
-  }
+.hero-section .hero-slider {
+  position: relative;
+  height: 320px;
+  width: 100%;
+  overflow: hidden;
+}
 
-  .hero-section .hero-slider::after {
-    display: none;
-  }
+.hero-section .hero-slider::after {
+  display: none;
+}
 
-  .hero-section .hero-slider-img {
-    position: absolute;
-    inset: 0;
-  }
+.hero-section .hero-slider-img {
+  position: absolute;
+  inset: 0;
+}
 
-  .hero-panel {
-    position: absolute;
-    bottom: clamp(20px, 5vw, 32px);
-    left: 50%;
-    top: auto;
-    right: auto;
-    transform: translateX(-50%);
-    width: min(72vw, 300px);
-    min-height: 360px;
-    max-width: 300px;
-    margin: 0;
-    background: #00234e;
-    padding: 28px 22px 32px;
-    height: auto;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
-    border-radius: 0;
-    z-index: 3;
-    align-items: flex-start;
-    gap: 0;
-    justify-content: space-between;
-  }
+.hero-panel {
+  position: relative;
+  margin: -90px 16px 24px;   /* القيمة السالبة هي اللي كتحكم قداش يطلع البانل فوق الصورة */
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  width: auto;
+  max-width: none;
+  min-height: auto;
+  background: #00234e;
+  padding: 28px 24px 24px;
+  height: auto;
+  box-sizing: border-box;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  border-radius: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  justify-content: space-between;
+}
 
-  .hero-section--home .hero-panel {
-    min-height: 380px;
-    height: 380px;
-  }
+.hero-section--home .hero-panel {
+  min-height: auto;
+  height: auto;
+}
+
 
   .hero-panel-body {
     width: 100%;
@@ -824,17 +829,13 @@ header,
     line-height: 1.35;
   }
 
-  .slider-dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    padding-top: 0;
-    position: static;
-    transform: none;
-    width: 100%;
-  }
+ .slider-dots {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 0;
+}
 
   .slider-dot {
     width: 10px;
@@ -904,15 +905,7 @@ header,
     flex-direction: column;
     justify-content: flex-start;
   }
-
-  .training-hero-content p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-  }
+ 
 
   .training-hero-content h1 {
     font-size: clamp(1.35rem, 5.2vw, 1.65rem);
@@ -4760,7 +4753,188 @@ html[dir="rtl"] .phone-number-input {
     min-height: 520px;
     margin-top: 112px;
   }
+   
+  @media (max-width: 768px) {
+  /* ─── تحويل جميع الهيروهات الداخلية إلى نفس أسلوب الصفحة الرئيسية ─── */
 
+  /* 1. جعل الهيرو الداخلي يحتل مساحة كاملة مع صورة خلفية */
+  .inner-page-hero,
+  .maritime-page-hero,
+  .training-hero,
+  .cqpm-hero-section,
+  .presentation-page-hero {
+    position: relative;
+    display: block;
+    min-height: 360px; /* يمكن تعديلها حسب الرغبة */
+    height: auto;
+    padding: 0;
+    margin-top: 64px;
+    background: transparent;
+    overflow: hidden;
+    grid-template-columns: unset;
+    grid-template-rows: unset;
+  }
+
+  /* 2. الصورة نفسها تمتد على كامل المساحة */
+  .inner-page-hero > img,
+  .maritime-page-hero > img,
+  .presentation-page-hero > img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+  }
+
+  /* 3. اللوحة الزرقاء (المحتوى) تظهر فوق الصورة مع تداخل */
+  .inner-page-hero-content,
+  .maritime-page-hero-content,
+  .presentation-page-hero-content {
+    position: absolute;
+    bottom: clamp(20px, 5vw, 32px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 300px;
+    background: #00234e;
+    padding: 28px 22px 32px;
+    z-index: 2;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* 4. تنسيق النصوص داخل اللوحة */
+  .inner-page-hero-content h1,
+  .maritime-page-hero-content h1,
+  .presentation-page-hero-content h1 {
+    font-size: clamp(1.25rem, 4.8vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.28;
+    color: white;
+    margin: 0 0 6px;
+    text-transform: none;
+  }
+
+  .inner-page-hero-content p,
+  .maritime-page-hero-content p,
+  .presentation-page-hero-content p {
+    font-size: 0.92rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.92);
+    margin: 0;
+  }
+
+  /* 5. إخفاء أي عناصر إضافية غير مرغوب فيها (مثل الـ overlay الزائدة) */
+  .inner-page-hero .inner-page-overlay,
+  .presentation-page-hero .presentation-page-overlay {
+    display: none;
+  }
+
+  /* 6. تخصيص training-hero (يستخدم هيكل مختلف قليلاً) */
+  .training-hero {
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+  }
+  .training-hero img {
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .training-hero-content {
+    position: absolute;
+    bottom: clamp(20px, 5vw, 32px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 300px;
+    background: #00234e;
+    padding: 28px 22px 32px;
+    z-index: 2;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .training-hero-content h1 {
+    font-size: clamp(1.25rem, 4.8vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.28;
+    color: white;
+    margin: 0 0 6px;
+  }
+  .training-hero-content > span {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.5;
+  }
+  .training-hero-content .btn {
+    margin-top: 12px;
+    width: fit-content;
+  }
+
+  /* 7. تخصيص maritime-page-hero (كلمة المدير) */
+  .maritime-page-hero {
+    background: transparent;
+  }
+  .maritime-page-hero::before,
+  .director-hero::after {
+    display: none;
+  }
+  .maritime-page-hero-content {
+    /* تم تنسيقه أعلاه، لكن يمكن إضافة تحسينات للخلفية */
+    background: #00234e;
+  }
+
+  /* 8. ضبط القاعدة الذهبية (العنصر الزخرفي) */
+  .presentation-rule {
+    width: 48px;
+    height: 4px;
+    background: var(--secondary);
+    margin: 8px 0;
+  }
+
+  /* 9. إخفاء أي breadcrumb غير ضروري على الموبايل إذا كان يزعج */
+  .cqpm-hero-breadcrumb {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+   inner-page-hero-content span:first-child,
+  .presentation-page-hero-content span:first-child,
+  .maritime-page-hero-content span,
+  .cqpm-hero-breadcrumb,
+  .training-hero-content p {
+    color: rgb(231, 194, 121) !important;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+}
+.hero-section,
+  .inner-page-hero,
+  .training-hero,
+  .maritime-page-hero,
+  .presentation-page-hero,
+  .cqpm-hero-section,
+  .registration-page,
+  .avis-detail-header {
+    margin-top: 63px !important;
+  }
   .maritime-page-hero,
   .inner-page-hero {
     min-height: unset;
@@ -6799,4 +6973,14 @@ html[dir="rtl"] .phone-number-input {
   .avis-detail-meta {
     gap: 12px;
   }
+}form-field select option {
+  color: #1a1c1e !important; 
+  background-color: white !important; 
+}
+
+.form-field select option[value=""] {
+  color: #9ca3af !important;
+}
+.programs-heading-simple {
+  margin-bottom: 24px; /* ou la valeur que tu veux */
 }
