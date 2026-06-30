@@ -55,6 +55,4 @@ php artisan serve
 
 Voir `.env.example` (frontend) et `backend/.env.example` (backend Laravel) pour la configuration nécessaire avant de lancer le projet. **Ne jamais committer les fichiers `.env`.**
 
-## Auteur
 
-Projet réalisé par Fadila — ENSIASD, Université Ibn Zohr, Taroudant.
