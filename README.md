@@ -1,6 +1,6 @@
 # CQPM Nador — Site Institutionnel
 
-Site web multilingue (FR / AR / EN) du **Centre de Qualification Professionnelle Maritime de Nador**, avec back-office d'administration intégré.
+Site web  du **Centre de Qualification Professionnelle Maritime de Nador **
 
 ## Stack technique
 
