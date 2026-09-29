@@ -6,7 +6,7 @@ import { ensureCsrf, authApi } from "../services/adminApi";
 import { useApiQuery } from "../hooks/useApi";
 import { useToast } from "../hooks/useToast";
 
-const DEFAULT_LOGO = "/assets/cqpm-logo.jpg";
+
 
 export default function Login() {
   const navigate = useNavigate();

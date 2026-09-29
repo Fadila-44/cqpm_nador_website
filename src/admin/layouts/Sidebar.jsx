@@ -4,7 +4,7 @@ import { useApiQuery } from "../hooks/useApi";
 import { settingsApi } from "../services/adminApi";
 import { siteNav, PUBLIC_SITE_URL, ExternalLink, ChevronDown, ChevronRight } from "../config/navigation";
 
-const DEFAULT_LOGO = "/assets/cqpm-logo.jpg";
+
 
 function NavGroup({ item, collapsed, hidden, expanded, toggleGroup, onClose, depth = 0 }) {
   const location = useLocation();
@@ -67,7 +67,7 @@ function NavGroup({ item, collapsed, hidden, expanded, toggleGroup, onClose, dep
 export default function Sidebar({ collapsed, hidden, mobileOpen, onClose }) {
   const [expanded, setExpanded] = useState({ "Contenu du site": true, CQPM: true, Formation: true, Admission: true, Formulaires: true });
   const { data: settings } = useApiQuery(["settings"], settingsApi.get, { staleTime: 60000 });
-  const logoUrl = DEFAULT_LOGO;
+  const logoUrl = "assets/logo.jpeg";
 
   const toggleGroup = (label) => setExpanded((p) => ({ ...p, [label]: !p[label] }));
 
@@ -96,7 +96,8 @@ export default function Sidebar({ collapsed, hidden, mobileOpen, onClose }) {
       </div>
 
       <nav className="flex-1 overflow-y-auto py-3 space-y-0.5">
-        {siteNav.map((item) => (
+        {siteNav.map((item
+          <I>m(
           <NavGroup key={item.label || item.to} item={item} collapsed={collapsed && !mobileOpen} hidden={hidden && !mobileOpen} expanded={expanded} toggleGroup={toggleGroup} onClose={onClose} />
         ))}
       </nav>
